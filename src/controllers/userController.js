@@ -15,14 +15,6 @@ const getUsers = (req, res) => {
 
 const createUser = (req, res) => {
   const user = req.body;
-  if (!user) return res.status(400).json({ error: "You need send something" });
-  if (!user?.id) return res.status(400).json({ error: "User ID is required" });
-  if (typeof user.id !== "number")
-    return res.status(400).json({ error: "User ID must be a number" });
-  if (!user?.name)
-    return res.status(400).json({ error: "User name is required" });
-  if (typeof user.name !== "string")
-    return res.status(400).json({ error: "User name must be a string" });
 
   const userIndex = Users.findIndex(
     (userDataBase) => userDataBase.id === user.id,
@@ -36,14 +28,6 @@ const createUser = (req, res) => {
 
 const updateUser = (req, res) => {
   const user = req.body;
-  if (!user) return res.status(400).json({ error: "You need send something" });
-  if (!user?.id) return res.status(400).json({ error: "User ID is required" });
-  if (typeof user.id !== "number")
-    return res.status(400).json({ error: "User ID must be a number" });
-  if (!user?.name)
-    return res.status(400).json({ error: "User name is required" });
-  if (typeof user.name !== "string")
-    return res.status(400).json({ error: "User name must be a string" });
 
   const userIndex = Users.findIndex(
     (userDataBase) => userDataBase.id === user.id,
