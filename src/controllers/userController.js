@@ -30,9 +30,10 @@ const createUser = (req, res) => {
 
 const updateUser = (req, res) => {
   const user = req.body;
+  const id = req.params?.id;
 
   const userIndex = Users.findIndex(
-    (userDataBase) => userDataBase.id === user.id,
+    (userDataBase) => userDataBase.id === id,
   );
   if (userIndex === -1)
     return res.status(404).json({ error: "User not found" });
@@ -43,11 +44,13 @@ const updateUser = (req, res) => {
 
 const deleteUser = (req, res) => {
   const user = req.body;
+  const id = req.params?.id;
+
   if (!user) return res.status(400).json({ error: "You need send something" });
-  if (!user?.id) return res.status(400).json({ error: "User ID is required" });
+  if (!id) return res.status(400).json({ error: "User ID is required" });
 
   const userIndex = Users.findIndex(
-    (userDataBase) => userDataBase.id === user.id,
+    (userDataBase) => userDataBase.id === id,
   );
   if (userIndex === -1)
     return res.status(404).json({ error: "User not found" });
