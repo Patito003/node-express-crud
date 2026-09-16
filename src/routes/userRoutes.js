@@ -5,13 +5,14 @@ const router = Router();
 
 const {
   getUsers,
+  getUserById,
   createUser,
   updateUser,
   deleteUser,
 } = require('../controllers/userController');
 
 router.get('/users{/:id}', getUsers);
-// router.get('/users/:id', getUserById);
+router.get('/users/:id', getUserById);
 router.post('/users', validateUserData, createUser);
 router.put('/users', validateUserData, updateUser);
 router.delete('/users', deleteUser);

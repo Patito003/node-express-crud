@@ -1,8 +1,12 @@
 const { Users } = require("../database/usersData");
 
 const getUsers = (req, res) => {
+  return res.status(200).json(Users);
+};
+
+const getUserById = (req, res) => {
   const id = parseInt(req?.params?.id);
-  if (!id) return res.status(200).json(Users);
+  if (!id) return res.status(400).json({ error: "User ID is required" });
   if (typeof id !== "number")
     return res.status(400).json({ error: "User ID must be a number" });
 
@@ -60,6 +64,7 @@ const deleteUser = (req, res) => {
 
 module.exports = {
   getUsers,
+  getUserById,
   createUser,
   updateUser,
   deleteUser,
