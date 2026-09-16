@@ -1,4 +1,10 @@
-const errorMessage = (res, statusCode, message) => {
+import { Response } from "express";
+
+const errorMessage = (
+  res: Response,
+  statusCode: number,
+  message: string,
+): Response => {
   if (!res || !statusCode || !message) {
     throw new Error("Missing parameters for errorMessage function");
   }
@@ -10,6 +16,4 @@ const errorMessage = (res, statusCode, message) => {
   return res.status(statusCode).json({ error: message });
 };
 
-module.exports = {
-  errorMessage,
-};
+export { errorMessage };

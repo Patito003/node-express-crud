@@ -1,8 +1,9 @@
-const express = require("express");
-const userRoutes = require("./routes/userRoutes");
-const logger = require("./middlewares/logger");
+import express from "express";
 
-const PORT = 3000;
+import userRoutes from "./routes/userRoutes";
+import logger from "./middlewares/logger";
+
+const PORT: number = 3000;
 const app = express();
 
 app.use(express.json());

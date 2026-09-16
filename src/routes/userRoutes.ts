@@ -1,15 +1,15 @@
-const { Router } = require("express");
-const { validateBody } = require("../middlewares/userValidator");
+import Router from "express";
 
-const router = Router();
-
-const {
+import { validateBody } from "../middlewares/userValidator";
+import {
   getUsers,
   getUserById,
   createUser,
   updateUser,
   deleteUser,
-} = require("../controllers/userController");
+} from "../controllers/userController";
+
+const router = Router();
 
 router.get("/users", getUsers);
 router.get("/users/:id", getUserById);
@@ -17,4 +17,4 @@ router.post("/users", validateBody, createUser);
 router.put("/users/:id", validateBody, updateUser);
 router.delete("/users/:id", deleteUser);
 
-module.exports = router;
+export default router;
