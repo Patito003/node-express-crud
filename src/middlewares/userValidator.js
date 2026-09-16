@@ -1,3 +1,5 @@
+const { errorMessage } =  require("../helpers/responseHelper");
+
 const validateBody = (req, res, next) => {
   const user = req.body;
 
@@ -11,18 +13,6 @@ const validateBody = (req, res, next) => {
   
   next();
 };
-
-const errorMessage = (res, statusCode, message) => {
-  if (!res || !statusCode || !message) {
-    throw new Error("Missing parameters for errorMessage function");
-  }
-
-  if (typeof statusCode !== "number" || typeof message !== "string") {
-    throw new Error("Invalid parameters for errorMessage function");
-  }
-
-  return res.status(statusCode).json({ error: message });
-}
 
 module.exports = {
   validateBody,
