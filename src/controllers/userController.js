@@ -7,8 +7,6 @@ const getUsers = (req, res) => {
 const getUserById = (req, res) => {
   const id = parseInt(req?.params?.id);
   if (!id) return res.status(400).json({ error: "User ID is required" });
-  if (typeof id !== "number")
-    return res.status(400).json({ error: "User ID must be a number" });
 
   const userIndex = Users.findIndex((userDataBase) => userDataBase.id === id);
   if (userIndex === -1)
@@ -47,8 +45,6 @@ const deleteUser = (req, res) => {
   const user = req.body;
   if (!user) return res.status(400).json({ error: "You need send something" });
   if (!user?.id) return res.status(400).json({ error: "User ID is required" });
-  if (typeof user.id !== "number")
-    return res.status(400).json({ error: "User ID must be a number" });
 
   const userIndex = Users.findIndex(
     (userDataBase) => userDataBase.id === user.id,
