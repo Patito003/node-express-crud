@@ -1,4 +1,4 @@
-const validateUserData = (req, res, next) => {
+const validateBody = (req, res, next) => {
   const user = req.body;
 
   if (!user) return errorMessage(res, 400, "You need send something");
@@ -25,5 +25,5 @@ const errorMessage = (res, statusCode, message) => {
 }
 
 module.exports = {
-  validateUserData,
+  validateBody,
 };

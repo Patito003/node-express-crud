@@ -5,7 +5,7 @@ const getUsers = (req, res) => {
 };
 
 const getUserById = (req, res) => {
-  const id = parseInt(req?.params?.id);
+  const id = req?.params?.id;
   if (!id) return res.status(400).json({ error: "User ID is required" });
 
   const userIndex = Users.findIndex((userDataBase) => userDataBase.id === id);
@@ -32,26 +32,22 @@ const updateUser = (req, res) => {
   const user = req.body;
   const id = req.params?.id;
 
-  const userIndex = Users.findIndex(
-    (userDataBase) => userDataBase.id === id,
-  );
+  if (!id) return res.status(400).json({ error: "User ID is required" });
+
+  const userIndex = Users.findIndex((userDataBase) => userDataBase.id === id);
   if (userIndex === -1)
     return res.status(404).json({ error: "User not found" });
-
   Users[userIndex] = user;
+
   return res.status(200).json({ message: "User updated successfully", user });
 };
 
 const deleteUser = (req, res) => {
-  const user = req.body;
   const id = req.params?.id;
 
-  if (!user) return res.status(400).json({ error: "You need send something" });
   if (!id) return res.status(400).json({ error: "User ID is required" });
 
-  const userIndex = Users.findIndex(
-    (userDataBase) => userDataBase.id === id,
-  );
+  const userIndex = Users.findIndex((userDataBase) => userDataBase.id === id);
   if (userIndex === -1)
     return res.status(404).json({ error: "User not found" });
 

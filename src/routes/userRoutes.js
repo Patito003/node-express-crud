@@ -1,5 +1,5 @@
-const { Router } = require('express');
-const { validateUserData } = require("../middlewares/userValidator");
+const { Router } = require("express");
+const { validateBody } = require("../middlewares/userValidator");
 
 const router = Router();
 
@@ -9,12 +9,12 @@ const {
   createUser,
   updateUser,
   deleteUser,
-} = require('../controllers/userController');
+} = require("../controllers/userController");
 
-router.get('/users', getUsers);
-router.get('/users/:id', getUserById);
-router.post('/users', validateUserData, createUser);
-router.put('/users/:id', validateUserData, updateUser);
-router.delete('/users/:id', deleteUser);
+router.get("/users", getUsers);
+router.get("/users/:id", getUserById);
+router.post("/users", validateBody, createUser);
+router.put("/users/:id", validateBody, updateUser);
+router.delete("/users/:id", deleteUser);
 
 module.exports = router;
