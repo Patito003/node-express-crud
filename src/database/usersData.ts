@@ -1,5 +1,5 @@
-import { User } from "../interfaces/user.interface";
+// import { User } from "../interfaces/client.interface";
 
-const Users: User[] = [];
+// const Users: User[] = [];
 
-export default Users;
+// export default Users;
