@@ -1,6 +1,6 @@
 import Router from "express";
 
-import { validateBody } from "../middlewares/clientValidator";
+import { validateClient } from "../middlewares/clientValidator";
 import {
   getClients,
   getClientById,
@@ -13,8 +13,8 @@ const router = Router();
 
 router.get("/client", getClients);
 router.get("/client/:id", getClientById);
-router.post("/client", validateBody, createClient);
-router.put("/client/:id", validateBody, updateClient);
+router.post("/client", validateClient, createClient);
+router.put("/client/:id", validateClient, updateClient);
 router.delete("/client/:id", deleteClient);
 
 export default router;

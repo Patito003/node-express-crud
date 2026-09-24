@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { errorMessage } from "../helpers/responseHelper";
 
-const validateBody = (
+const validateClient = (
   req: Request,
   res: Response,
   next: NextFunction,
@@ -34,4 +34,4 @@ const validateBody = (
   next();
 };
 
-export { validateBody };
+export { validateClient };

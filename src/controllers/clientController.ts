@@ -1,15 +1,16 @@
 import { Request, Response } from "express";
 
 import Clients from "../database/clientsData";
+import { AuthRequest } from "../interfaces/auth.interface";
 import { errorMessage } from "../helpers/responseHelper";
 
 // GET /api/client
-const getClients = (req: Request, res: Response): void => {
+const getClients = (req: AuthRequest, res: Response): void => {
   res.status(200).json(Clients);
 };
 
 // GET /api/client/:id
-const getClientById = (req: Request, res: Response): void => {
+const getClientById = (req: AuthRequest, res: Response): void => {
   const id = req?.params?.id;
   if (!id) {
     errorMessage(res, 400, "Client ID is required");
@@ -28,7 +29,7 @@ const getClientById = (req: Request, res: Response): void => {
 };
 
 // POST /api/client
-const createClient = (req: Request, res: Response): void => {
+const createClient = (req: AuthRequest, res: Response): void => {
   const client = req.body;
 
   const clientIndex = Clients.findIndex(
@@ -45,7 +46,7 @@ const createClient = (req: Request, res: Response): void => {
 };
 
 // PUT /api/client/:id
-const updateClient = (req: Request, res: Response): void => {
+const updateClient = (req: AuthRequest, res: Response): void => {
   const client = req.body;
   const id = req.params?.id;
 
@@ -68,7 +69,7 @@ const updateClient = (req: Request, res: Response): void => {
 };
 
 // DELETE /api/client/:id
-const deleteClient = (req: Request, res: Response): void => {
+const deleteClient = (req: AuthRequest, res: Response): void => {
   const id = req.params?.id;
 
   if (!id) {
